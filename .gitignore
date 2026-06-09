@@ -1,0 +1,44 @@
+# --- 工程与用户配置文件（必须忽略）---
+# *.uvoptx 和 *.uvguix.* 记录了本地调试器配置、断点和窗口布局。
+# 提交后会覆盖他人配置，引发团队冲突。
+*.uvoptx
+*.uvguix.*
+*.uvopt
+*.uvgui.*
+*.bak
+
+# --- 编译中间文件与输出文件 ---
+# .o, .d, .crf 等文件由编译器生成，数量庞大且非源码，需忽略。
+*.o
+*.obj
+*.d
+*.crf
+*.axf
+*.hex
+*.bin
+*.map
+*.lst
+*.htm
+*.lnp
+*.sct
+*.dep
+*.plg
+*.iex
+*.scvd
+
+# --- 默认构建输出文件夹 ---
+# Keil 默认生成的 Objects/ 和 Listings/ 文件夹，内容同上，建议整体忽略。
+Objects/
+Listings/
+RTE/
+DebugConfig/
+
+.metadata/
+
+# --- 其它杂项与临时文件 ---
+# 打包文件、日志、J-Link调试器等杂项。
+*.rar
+*.zip
+*.log
+JLinkLog.txt
+*.dbgconf
