@@ -1,0 +1,13 @@
+2026-03-31 00:42:08,606 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-31 00:42:08,623 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-31 00:42:08,623 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-31 00:42:08,624 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-31 00:42:08,624 [ERROR] AdobePublisher:162 - Exception while opening the connection: java.net.SocketTimeoutException: Read timed out
+2026-03-31 00:48:26,908 [INFO] Activator:176 - 
+
+
+2026-03-31 00:48:26,914 [INFO] Activator:177 - !SESSION log4j initialized
+2026-03-31 00:48:39,255 [INFO] LogOutputStream:77 - [STDOUT_REDIRECT] 
+2026-03-31 01:02:00,477 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connection refused: getsockopt
+2026-03-31 01:02:00,498 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connection refused: getsockopt
+2026-03-31 01:02:00,510 [ERROR] ConfigurationRetriever:142 - IOException on connection: Connection refused: getsockopt
