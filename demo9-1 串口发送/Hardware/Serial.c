@@ -23,7 +23,8 @@ void Serial_Init(void)
 	USART_Cmd(USART1,ENABLE);
 }
 
-void (uint16_t data)
+void Serial_SendByte(uint16_t Byte)
 {
-	
+	USART_SendData(USART1,Byte);
+	while(USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET);
 }
