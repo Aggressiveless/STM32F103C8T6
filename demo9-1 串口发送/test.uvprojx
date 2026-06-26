@@ -678,12 +678,12 @@
             <File>
               <FileName>LED.c</FileName>
               <FileType>1</FileType>
-              <FilePath>D:\STM32\demo03-按键控制\Hardware\LED.c</FilePath>
+              <FilePath>C:\STM32\demo9-1 串口发送\Hardware\LED.c</FilePath>
             </File>
             <File>
               <FileName>LED.h</FileName>
               <FileType>5</FileType>
-              <FilePath>D:\STM32\demo03-按键控制\Hardware\LED.h</FilePath>
+              <FilePath>C:\STM32\demo9-1 串口发送\Hardware\LED.h</FilePath>
             </File>
             <File>
               <FileName>Key.c</FileName>
