@@ -40,3 +40,37 @@ void Serial_SendArray(uint8_t *Array,uint16_t Length)
 	}
 }
 
+void Serial_SendString(char *String)
+{
+	uint8_t i;
+	for(i = 0;String[i] != '\0';i++)
+	{
+		Serial_SendByte(String[i]);
+	}
+}
+
+uint32_t Serial_Pow(uint32_t X,uint32_t Y)
+{
+	uint32_t Result = 1;
+	while (Y--)                           //--Y
+	{
+		Result *= X;                //result = result * x
+	}
+	return Result;
+}
+
+void Serial_SendNumber(uint32_t Number,uint8_t Length)
+{
+	uint8_t i;
+	for(i = 0;i < Length;i++)
+	{
+		Serial_SendByte(Number / Serial_Pow(10,Length - i - 1) % 10 + '0');
+	}
+}
+
+int fputc(int ch,FILE *f)
+{
+	Serial_SendByte(ch);
+	return ch;
+}
+
