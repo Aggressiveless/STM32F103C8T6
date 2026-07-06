@@ -10,6 +10,9 @@ void Serial_SendString(char *String);
 void Serial_SendNumber(uint32_t Number,uint8_t Length);
 int fputc(int ch,FILE *f);
 void Serial_ReceiveData(void);
+uint8_t Serial_GetRxFlag(void);
+uint8_t Serial_GetRxData(void);
+void USART1_IRQHandler(void);
 
 
 

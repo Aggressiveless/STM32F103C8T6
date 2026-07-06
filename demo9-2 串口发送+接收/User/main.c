@@ -12,15 +12,16 @@ int main(void)
 	
 	Serial_Init();
 	
-
+	OLED_ShowString(1,1,"RxData:");
 
 	while(1)
 	{
 	
-		if(USART_GetFlagStatus(USART1,USART_FLAG_RXNE) == SET)
+		if(Serial_GetRxFlag() == 1)
 		{
-			RxData = USART_ReceiveData(USART1);
-			OLED_ShowHexNum(1,1,RxData,2);
+			RxData = Serial_GetRxData();
+			Serial_SendByte(RxData);
+			OLED_ShowHexNum(1,8,RxData,2);
 		}
 	}
 }
