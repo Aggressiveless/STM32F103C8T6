@@ -10,11 +10,13 @@ void AD_Init(void)
 	
 	GPIO_InitTypeDef GPIO_InitStructure;
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AIN;
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0 | GPIO_Pin_1 | GPIO_Pin_2 | GPIO_Pin_3;
+	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
 	GPIO_Init(GPIOA,&GPIO_InitStructure);
 	
+
 	//选择输入通道
+
 	ADC_RegularChannelConfig(ADC1,ADC_Channel_0,1,ADC_SampleTime_55Cycles5);
 	
 	
@@ -22,6 +24,7 @@ void AD_Init(void)
 	ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;
 	ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;
 	ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;
+
 	ADC_InitStructure.ADC_ContinuousConvMode = DISABLE;//单次转换
 	ADC_InitStructure.ADC_ScanConvMode = DISABLE;//非扫描
 	ADC_InitStructure.ADC_NbrOfChannel = 1;
@@ -29,6 +32,7 @@ void AD_Init(void)
 	
 	
 	ADC_Cmd(ADC1,ENABLE);
+
 	
 	ADC_ResetCalibration(ADC1); //复位校准
 	while(ADC_GetResetCalibrationStatus(ADC1) == SET);//获取复位校准状态
@@ -37,9 +41,8 @@ void AD_Init(void)
 	
 }
 
-uint16_t AD_GetValue(uint8_t ADC_Channel)
+uint16_t AD_GetValue(void)
 {
-	ADC_RegularChannelConfig(ADC1,ADC_Channel,1,ADC_SampleTime_55Cycles5);//将通道选择放在
 	ADC_SoftwareStartConvCmd(ADC1,ENABLE);
 	while(ADC_GetFlagStatus(ADC1,ADC_FLAG_EOC) == RESET);
 	return ADC_GetConversionValue(ADC1);
