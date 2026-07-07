@@ -26,7 +26,7 @@ int main(void)
 	
 	while(1)
 	{
-		if (Serial_GetRxFlag() == 1)
+		if (Serial_RxFlag == 1)
 		{
 			
 			OLED_ShowString(4,1,"                ");
@@ -52,6 +52,7 @@ int main(void)
 				OLED_ShowString(2,1,"                ");
 				OLED_ShowString(2,1,"ERROR_CMD");
 			}
+			Serial_RxFlag = 0;
 		}
 	}	
 }

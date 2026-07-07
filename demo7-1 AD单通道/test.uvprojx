@@ -10,11 +10,7 @@
       <TargetName>Target 1</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-<<<<<<< HEAD
       <pCCUsed>5060528::V5.06 update 5 (build 528)::ARMCC</pCCUsed>
-=======
-      <pCCUsed>5050041::5.06 update 4 (build 528)::ARMCC</pCCUsed>
->>>>>>> 2fc00b8badae6819aa47f4e7851369efc1eca3af
       <uAC6>0</uAC6>
       <TargetOption>
         <TargetCommonOption>

@@ -109,15 +109,6 @@ void Serial_ReceiveData(void)
 
 
 
-uint8_t Serial_GetRxFlag(void)
-{
-	if(Serial_RxFlag == 1)
-	{
-		Serial_RxFlag = 0;
-		return 1;
-	}
-	return 0;
-}
 
 
 
@@ -133,7 +124,7 @@ void USART1_IRQHandler(void)//´®¿ÚÖÐ¶Ïº¯Êý
 		
 		if (RxState == 0)
 		{
-			if(RxData == '@')
+			if(RxData == '@' && Serial_RxFlag == 0)
 			{
 				RxState = 1;
 				pRxPacket = 0;
