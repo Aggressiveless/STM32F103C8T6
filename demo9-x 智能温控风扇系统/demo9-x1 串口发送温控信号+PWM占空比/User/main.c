@@ -41,5 +41,10 @@ int main(void)
 			Serial_SendString("\r\n");
 		}
 		
+		if (Temp >=  20)
+		{
+			PWM_SetCompare1();
+		}
+		
 	}
 }

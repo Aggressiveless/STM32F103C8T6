@@ -31,11 +31,3 @@ void Motor_SetSpeed(int8_t Speed)
 	}
 }
 
-void Motor_Turn(void)
-{
-	if(GPIO_ReadOutputDataBit(GPIOB,GPIO_Pin_1) == 0)
-	{
-		
-	
-	}
-}

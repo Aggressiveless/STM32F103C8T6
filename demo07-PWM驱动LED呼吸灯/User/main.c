@@ -13,7 +13,7 @@ int main(void)
 
 	while(1)
 	{
-	for(i = 0;i <= 100;i++)
+		for(i = 0;i <= 100;i++)
 		{
 			PWM_SetCompare1(i);
 			Delay_ms(10);
