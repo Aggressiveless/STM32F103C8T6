@@ -23,7 +23,7 @@ int main(void)
 		KeyNum = Key_GetNum();
 		if (KeyNum == 0)
 		{
-			
+			Motor_Turn();
 		}
 	}
 }
