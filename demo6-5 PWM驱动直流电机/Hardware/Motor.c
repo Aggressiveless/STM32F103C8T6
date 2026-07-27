@@ -42,12 +42,13 @@ void Motor_SetSpeed(int8_t Speed)
 void Motor_Turn(void)
 {
 	KeyNum  = Key_GetNum();
-	if(KeyNum == 1)
-	{
-		GPIO_ResetBits(GPIOA,GPIO_Pin_11);
-	}
-	if(GPIO_ReadOutputDataBit(GPIOA,GPIO_Pin_11) == 0)
+	if(KeyNum == 1 && GPIO_ReadOutputDataBit(GPIOA,GPIO_Pin_11) == 0)
 	{
 		GPIO_SetBits(GPIOA,GPIO_Pin_11);
 	}
+	if(KeyNum == 1 && GPIO_ReadOutputDataBit(GPIOA,GPIO_Pin_11) == 1)
+	{
+		GPIO_ResetBits(GPIOA,GPIO_Pin_11);
+	}
 }
+

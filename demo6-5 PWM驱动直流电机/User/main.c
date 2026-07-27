@@ -7,7 +7,6 @@
 
 
 uint8_t i;
-uint8_t KeyNum;
 
 
 int main(void)

@@ -7,4 +7,6 @@ void Motor_SetSpeed(int8_t Speed);
 
 void Motor_Turn(void);
 
+extern uint8_t KeyNum;
+
 #endif
