@@ -19,14 +19,14 @@ void Motor_SetSpeed(int8_t Speed)
 {
 	if(Speed >= 0)
 	{
-		GPIO_SetBits(GPIOA,GPIO_Pin_4);
-		GPIO_ResetBits(GPIOA,GPIO_Pin_5);
+		GPIO_SetBits(GPIOA,GPIO_Pin_5);
+		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
 		PWM_SetCompare3(Speed);
 	}
 	else
 	{
-		GPIO_SetBits(GPIOA,GPIO_Pin_5);
-		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
+		GPIO_SetBits(GPIOA,GPIO_Pin_4);
+		GPIO_ResetBits(GPIOA,GPIO_Pin_5);
 		PWM_SetCompare3(-Speed);
 	}
 }
