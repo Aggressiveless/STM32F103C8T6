@@ -4,6 +4,7 @@
 #include "AD.h"
 #include "Serial.h"
 #include "Key.h"
+#include "Motor.h"
 
 uint16_t ADValue;
 uint8_t KeyNum;
@@ -41,10 +42,12 @@ int main(void)
 			Serial_SendString("\r\n");
 		}
 		
-		if (Temp >=  20)
-		{
-			PWM_SetCompare1();
-		}
+		Motor_SetSpeed((uint16_t)Temp);
+		
+//		if (Temp >=  20)
+//		{
+//			Motor_SetSpeed();
+//		}
 		
 	}
 }
