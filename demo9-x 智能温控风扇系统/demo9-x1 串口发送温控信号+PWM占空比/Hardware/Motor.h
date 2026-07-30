@@ -6,5 +6,7 @@ void Motor_Init(void);
 
 void Motor_SetSpeed(int8_t Speed);
 
+void Motor_Turn(void);
+
 
 #endif

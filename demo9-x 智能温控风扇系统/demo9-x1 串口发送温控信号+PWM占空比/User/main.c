@@ -5,10 +5,11 @@
 #include "Serial.h"
 #include "Key.h"
 #include "Motor.h"
+#include "Integration.h"
 
-uint16_t ADValue;
-uint8_t KeyNum;
-float Temp;
+
+
+
 
 int main(void)
 {
@@ -17,32 +18,23 @@ int main(void)
 	OLED_Init();
 	AD_Init();
 	Key_Init();
+	Motor_Init();
 	
  	OLED_ShowString(1,1,"ADValue:");
 	OLED_ShowString(2,1,"Temperature:00.0");
+	Motor_SetSpeed(50);
 	while(1)
 	{
 		KeyNum = Key_GetNum();
 
-		
-		ADValue = AD_GetValue();
-		Temp = (float)(4096 - ADValue) / 4095 * 100.0 - 20.0;
+		Temp_Modude(KeyNum);
 
-		if(KeyNum == 1)
+		if(KeyNum == 2)
 		{
-			OLED_ShowNum(1,9,ADValue,4);
-			OLED_ShowNum(2,13,Temp,2);
-			OLED_ShowNum(2,16,(uint16_t)(Temp * 10) % 10 ,1);
-			OLED_ShowNum(3,1,(float)Temp,4);
-			
-			Serial_SendString("当前温度是：");
-			Serial_SendNumber(Temp,2);
-			Serial_SendString(".");
-			Serial_SendNumber((uint16_t)(Temp * 10) % 10,1);
-			Serial_SendString("\r\n");
+			Motor_Turn();
 		}
 		
-		Motor_SetSpeed((uint16_t)Temp);
+		
 		
 //		if (Temp >=  20)
 //		{

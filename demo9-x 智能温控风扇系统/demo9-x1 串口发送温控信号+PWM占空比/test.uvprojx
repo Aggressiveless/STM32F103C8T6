@@ -635,6 +635,16 @@
               <FileType>5</FileType>
               <FilePath>.\User\stm32f10x_it.h</FilePath>
             </File>
+            <File>
+              <FileName>Integration.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\Integration.c</FilePath>
+            </File>
+            <File>
+              <FileName>Integration.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\Integration.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -743,7 +753,7 @@
             <File>
               <FileName>Motor.c</FileName>
               <FileType>1</FileType>
-              <FilePath>.\Hareware\Motor.c</FilePath>
+              <FilePath>.\Hardware\Motor.c</FilePath>
             </File>
             <File>
               <FileName>Motor.h</FileName>
