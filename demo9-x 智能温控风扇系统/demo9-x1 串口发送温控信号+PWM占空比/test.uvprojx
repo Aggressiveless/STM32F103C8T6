@@ -645,6 +645,16 @@
               <FileType>5</FileType>
               <FilePath>.\User\Integration.h</FilePath>
             </File>
+            <File>
+              <FileName>FanModule.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\User\FanModule.c</FilePath>
+            </File>
+            <File>
+              <FileName>FanModule.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\User\FanModule.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -1,5 +1,8 @@
 #include "stm32f10x.h"                  // Device header
 #include "PWM.h"
+#include "OLED.h"
+
+uint16_t Speed;
 
 void Motor_Init(void)
 {
@@ -41,10 +44,30 @@ void Motor_Turn(void)
 	if (GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)
 	{
 		GPIO_SetBits(GPIOA, GPIO_Pin_11);
+		OLED_ShowString(3,12,"   ");
+		OLED_ShowNum(3,12,Speed,3);
+		if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 1)
+			{
+				Motor_SetSpeed(Speed);
+			}
 	}
 	else
 	{
-		GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+//		if(Speed != 0)
+//		{
+//			Motor_SetSpeed(Speed);
+//		}
+//		else
+//		{
+			GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+			OLED_ShowString(3,12,"   ");
+			OLED_ShowNum(3,12,0,3);
+			if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)
+			{
+				Motor_SetSpeed(0);
+			}
+//		}
+
 	}
 }
 

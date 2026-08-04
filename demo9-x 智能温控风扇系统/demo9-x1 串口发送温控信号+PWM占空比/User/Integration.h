@@ -1,7 +1,7 @@
 #ifndef __INTERATION_H
 #define __INTERATION_H
 
-void Temp_Modude(uint16_t KeyNum);
+void Display_Modude(uint16_t KeyNum);
 
 extern uint16_t ADValue;
 extern uint8_t KeyNum;
