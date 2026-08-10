@@ -8,7 +8,7 @@ void Motor_SetSpeed(int8_t Speed);
 
 void Motor_Turn(void);
 
-extern uint16_t Speed;
+extern int16_t Speed;
 
 
 #endif

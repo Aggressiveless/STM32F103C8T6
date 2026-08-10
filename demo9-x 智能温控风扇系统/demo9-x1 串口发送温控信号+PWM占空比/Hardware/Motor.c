@@ -2,7 +2,7 @@
 #include "PWM.h"
 #include "OLED.h"
 
-uint16_t Speed;
+int16_t Speed;
 
 void Motor_Init(void)
 {
@@ -45,7 +45,7 @@ void Motor_Turn(void)
 	{
 		GPIO_SetBits(GPIOA, GPIO_Pin_11);
 		OLED_ShowString(3,12,"   ");
-		OLED_ShowNum(3,12,Speed,3);
+		OLED_ShowSignedNum(3,12,Speed,3);
 		if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 1)
 			{
 				Motor_SetSpeed(Speed);
@@ -61,7 +61,7 @@ void Motor_Turn(void)
 //		{
 			GPIO_ResetBits(GPIOA, GPIO_Pin_11);
 			OLED_ShowString(3,12,"   ");
-			OLED_ShowNum(3,12,0,3);
+			OLED_ShowSignedNum(3,12,0,3);
 			if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)
 			{
 				Motor_SetSpeed(0);
