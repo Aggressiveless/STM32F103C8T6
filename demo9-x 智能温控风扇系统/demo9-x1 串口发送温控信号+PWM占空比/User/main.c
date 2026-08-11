@@ -27,17 +27,23 @@ int main(void)
 	OLED_ShowNum(3,12,000,3);
 	Motor_SetSpeed(Speed);
 	
-	ShowP1();
+	OLED_ShowString(1,1,"ADValue:");
+	OLED_ShowString(2,1,"Temperature:00.0");
+	OLED_ShowCN(3,1,0,1);
+	OLED_ShowCN(3,2,1,1);
+	OLED_ShowCN(3,3,2,1);
+	OLED_ShowCN(3,4,3,1);
+	OLED_ShowCN(3,5,4,1);
 	
 	while(1)
 	{
 		KeyNum = Key_GetNum();
-
-		TempDis_Modude(KeyNum);
 		
 		TurnPage(KeyNum);
 
-		ShowP1();
+		TempDis_Modude(KeyNum);
+
+
 		
 //		OLED_ShowNum(3,12,Speed,3);
 

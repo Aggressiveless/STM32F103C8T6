@@ -37,7 +37,7 @@ uint16_t FanModule(uint8_t KeyNum)
 		if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)
 			{
 				GPIO_SetBits(GPIOA,GPIO_Pin_11);
-				Speed = 0;
+				Speed = -20;
 				Motor_SetSpeed(Speed);
 				OLED_ShowNum(3,12,Speed,3);//
 				return Speed;

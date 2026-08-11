@@ -39,7 +39,7 @@ void ShowP1(void)
 {
 	
 	OLED_ShowString(1,1,"ADValue:");
-	OLED_ShowString(2,1,"Temperature:00.0");
+	OLED_ShowString(2,1,"Temperature:");
 	OLED_ShowCN(3,1,0,1);
 	OLED_ShowCN(3,2,1,1);
 	OLED_ShowCN(3,3,2,1);
@@ -55,6 +55,11 @@ void ShowP1(void)
 
 void ShowP2(void)
 {
+	OLED_ShowCN(1,1,5,1);
+	OLED_ShowCN(1,2,6,1);
+	OLED_ShowCN(1,3,7,1);
+	OLED_ShowCN(1,4,8,1);
+	OLED_ShowCN(1,5,9,1);
 	OLED_ShowString(1,1,"");
 }
  
@@ -67,10 +72,10 @@ void TurnPage(uint8_t KeyNum)
 	}
 	if(Num % 2 == 1)
 	{
-		ShowP1();
+		ShowP2();
 	}
 	else
 	{
-		ShowP2();
+		ShowP1();
 	}
 }
