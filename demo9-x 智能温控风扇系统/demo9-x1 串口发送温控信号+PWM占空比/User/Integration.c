@@ -9,6 +9,7 @@
 uint16_t ADValue;
 uint8_t KeyNum;
 float Temp;
+uint16_t Num = 0;
 
 
 
@@ -37,7 +38,9 @@ void TempDis_Modude(uint16_t KeyNum)
 
 void ShowP1(void)
 {
-	
+	OLED_ShowString(1,1,"                ");
+	OLED_ShowString(2,1,"                ");
+	OLED_ShowString(3,1,"                ");
 	OLED_ShowString(1,1,"ADValue:");
 	OLED_ShowString(2,1,"Temperature:");
 	OLED_ShowCN(3,1,0,1);
@@ -46,36 +49,85 @@ void ShowP1(void)
 	OLED_ShowCN(3,4,3,1);
 	OLED_ShowCN(3,5,4,1);
 	
+	TempDis_Modude(KeyNum);
+
+	
 	FanModule(KeyNum);
-	if(KeyNum == 2)
-	{
-		Motor_Turn();
-	}
+	
+}
+
+void ShowSP1(void)
+{
+	OLED_ShowString(1,1,"ADValue:");
+	OLED_ShowString(2,1,"Temperature:");
+	OLED_ShowCN(3,1,0,1);
+	OLED_ShowCN(3,2,1,1);
+	OLED_ShowCN(3,3,2,1);
+	OLED_ShowCN(3,4,3,1);
+	OLED_ShowCN(3,5,4,1);
+	
+	TempDis_Modude(KeyNum);
+
+	
+	FanModule(KeyNum);
+	
 }
 
 void ShowP2(void)
+{
+	OLED_ShowString(1,1,"                ");
+	OLED_ShowString(2,1,"                ");
+	OLED_ShowString(3,1,"                ");
+	OLED_ShowCN(1,1,5,1);
+	OLED_ShowCN(1,2,6,1);
+	OLED_ShowCN(1,3,7,1);
+	OLED_ShowCN(1,4,8,1);
+	OLED_ShowCN(1,5,9,1);
+	OLED_ShowString(1,11,":");
+}
+
+void ShowSP2(void)
 {
 	OLED_ShowCN(1,1,5,1);
 	OLED_ShowCN(1,2,6,1);
 	OLED_ShowCN(1,3,7,1);
 	OLED_ShowCN(1,4,8,1);
 	OLED_ShowCN(1,5,9,1);
-	OLED_ShowString(1,1,"");
+	OLED_ShowString(1,11,":");
 }
  
 void TurnPage(uint8_t KeyNum)
 {
-	uint8_t Num;
 	if(KeyNum == 5)
 	{
 		Num++;
+		if(Num % 2 == 1)
+		{
+			ShowP2();
+		}
+		else
+		{
+			ShowP1();
+		}
+		return;
 	}
+	
+	
+}
+
+void Display(uint16_t Num)
+{
 	if(Num % 2 == 1)
 	{
-		ShowP2();
+		ShowSP2();
 	}
 	else
 	{
-		ShowP1();
+		ShowSP1();
 	}
 }
+
+
+
+
+

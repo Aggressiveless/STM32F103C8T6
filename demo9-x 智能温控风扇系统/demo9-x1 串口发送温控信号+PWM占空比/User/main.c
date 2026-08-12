@@ -41,8 +41,7 @@ int main(void)
 		
 		TurnPage(KeyNum);
 
-		TempDis_Modude(KeyNum);
-
+		Display(Num);
 
 		
 //		OLED_ShowNum(3,12,Speed,3);

@@ -6,6 +6,11 @@ uint16_t AimTemp;
 
 uint16_t FanModule(uint8_t KeyNum)
 {
+	if(KeyNum == 2)
+	{
+		Motor_Turn();
+	}
+	
 	if(KeyNum == 3)
 	{
 		if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)
@@ -60,7 +65,7 @@ uint16_t FanModule(uint8_t KeyNum)
 
 void AutoMode(uint8_t KeyNum,uint16_t Temp)
 {
-	if(KeyNum == 2)
+	if(KeyNum == 3)
 	{
 		
 	}

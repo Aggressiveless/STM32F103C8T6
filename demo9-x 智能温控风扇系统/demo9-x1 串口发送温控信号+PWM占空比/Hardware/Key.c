@@ -71,10 +71,10 @@ uint8_t Key_GetNum(void)
 		}
 	}
 	
-	if(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_12) == 0)
+	if(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_12) == 0)
 	{
 		Delay_ms(20);
-		while(GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_12) == 0)
+		while(GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_12) == 0)
 		{
 			Delay_ms(20);
 			KeyNum = 5;
