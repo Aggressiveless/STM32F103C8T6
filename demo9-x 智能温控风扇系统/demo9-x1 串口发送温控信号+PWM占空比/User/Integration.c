@@ -24,6 +24,7 @@ void TempDis_Modude(uint16_t KeyNum)
 		{
 			OLED_ShowNum(1,9,ADValue,4);
 			OLED_ShowNum(2,13,Temp,2);
+			OLED_ShowString(2,15,".");
 			OLED_ShowNum(2,16,(uint16_t)(Temp * 10) % 10 ,1);
 			
 			Serial_SendString("当前温度是:");
