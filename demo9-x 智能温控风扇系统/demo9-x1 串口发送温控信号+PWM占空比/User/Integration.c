@@ -49,7 +49,7 @@ void ShowP1(void)
 	OLED_ShowCN(3,3,2,1);
 	OLED_ShowCN(3,4,3,1);
 	OLED_ShowCN(3,5,4,1);
-	
+	OLED_ShowString(3,11,":");
 	TempDis_Modude(KeyNum);
 
 	
@@ -66,7 +66,7 @@ void ShowSP1(void)
 	OLED_ShowCN(3,3,2,1);
 	OLED_ShowCN(3,4,3,1);
 	OLED_ShowCN(3,5,4,1);
-	
+	OLED_ShowString(3,11,":");
 	TempDis_Modude(KeyNum);
 
 	
@@ -95,6 +95,8 @@ void ShowSP2(void)
 	OLED_ShowCN(1,4,8,1);
 	OLED_ShowCN(1,5,9,1);
 	OLED_ShowString(1,11,":");
+	
+	AutoMode(KeyNum,AimTemp);
 }
  
 void TurnPage(uint8_t KeyNum)
