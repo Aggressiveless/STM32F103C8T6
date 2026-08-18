@@ -65,40 +65,44 @@ uint16_t FanModule(uint8_t KeyNum)
 
 void AutoMode(uint8_t KeyNum,uint16_t Temp)
 {
+	uint16_t Error = Temp - AimTemp;
+	uint16_t AutoSpeed = 0;
 	
-		if(KeyNum == 3)
-		{
-			if(AimTemp < 50)
-			{
-				AimTemp++;
-			}
-			else
-			{
-				OLED_ShowCN(1,1,10,1);
-				OLED_ShowCN(1,2,11,1);
-				OLED_ShowCN(1,3,12,1);
-				OLED_ShowCN(1,4,13,1);
-				OLED_ShowCN(1,5,14,1);
-				OLED_ShowCN(1,1,15,1);
-				OLED_ShowCN(1,2,16,1);
-				OLED_ShowString(1,11,":");
-			}
-		}
-		if(KeyNum == 4)
-		{
-			if(AimTemp > 0)
-			{
-				AimTemp--;
-			}
-		}
-		
-		OLED_ShowNum(1,12,AimTemp,2);
-		
-		if(AimTemp > Temp)
-		{
-			
-		}
 	
+	if(KeyNum == 3)
+	{
+		if(AimTemp < 50)
+		{
+			AimTemp++;
+		}
+		else
+		{
+			OLED_ShowCN(1,1,10,1);
+			OLED_ShowCN(1,2,11,1);
+			OLED_ShowCN(1,3,12,1);
+			OLED_ShowCN(1,4,13,1);
+			OLED_ShowCN(1,5,14,1);
+			OLED_ShowCN(1,1,15,1);
+			OLED_ShowCN(1,2,16,1);
+			OLED_ShowString(1,11,":");
+		}
+	}
+	if(KeyNum == 4)
+	{
+		if(AimTemp > 0)
+		{
+			AimTemp--;
+		}
+	}
+	
+	OLED_ShowNum(1,12,AimTemp,2);
+	
+	
+	
+	Motor_SetSpeed(Error);
+	
+	
+ 
 	
 }
 
