@@ -1,7 +1,12 @@
 #include "stm32f10x.h"                  // Device header
+#include "AD.h"
+
+uint16_t ADValue;
+float Temp;
 
 
-void PWM_Init(void)
+
+void PWM_Init(void) 
 {
 	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2,ENABLE);
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA,ENABLE);
@@ -36,6 +41,13 @@ void PWM_Init(void)
 void PWM_SetCompare3(uint16_t Compare)
 {
 	TIM_SetCompare3(TIM2,Compare);
+}
+
+uint16_t GetTemp(uint16_t AD_)
+{
+	ADValue = AD_GetValue();
+	Temp = (float)(4096 - ADValue) / 4095 * 100.0 - 28.0;
+	return Temp;
 }
 
 

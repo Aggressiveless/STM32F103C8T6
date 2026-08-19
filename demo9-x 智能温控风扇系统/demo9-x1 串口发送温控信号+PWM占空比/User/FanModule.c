@@ -1,10 +1,13 @@
 #include "stm32f10x.h"                  // Device header
 #include "Motor.h"
 #include "OLED.h"
+#include "PWM.h"
 
 uint16_t AimTemp = 20;
-
 uint16_t FanModule(uint8_t KeyNum)
+
+uint16_t
+
 {
 	if(KeyNum == 2)
 	{
@@ -65,6 +68,7 @@ uint16_t FanModule(uint8_t KeyNum)
 
 void AutoMode(uint8_t KeyNum,uint16_t Temp)
 {
+	
 	uint16_t Error = Temp - AimTemp;
 	uint16_t AutoSpeed = 0;
 	

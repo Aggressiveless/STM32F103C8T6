@@ -5,19 +5,16 @@
 #include "Key.h"
 #include "Motor.h"
 #include "FanModule.h"
+#include "PWM.h"
 
-uint16_t ADValue;
+
 uint8_t KeyNum;
-float Temp;
 uint16_t Num = 0;
 
 
 
-void TempDis_Modude(uint16_t KeyNum)
+void TempDis_Modude(uint16_t KeyNum,uint16_t Temp)
 {
-	ADValue = AD_GetValue();
-	Temp = (float)(4096 - ADValue) / 4095 * 100.0 - 28.0;
-
 
 	
 		if(KeyNum == 1)
