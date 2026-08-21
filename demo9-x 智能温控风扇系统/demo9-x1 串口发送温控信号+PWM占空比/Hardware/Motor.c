@@ -23,7 +23,7 @@ void Motor_Init(void)
 	
 }
 
-void Motor_SetSpeed(int8_t Speed)
+void Motor_SetSpeed(int16_t Speed)
 {
 	if(Speed >= 0)
 	{
@@ -47,9 +47,9 @@ void Motor_Turn(void)
 		OLED_ShowString(3,12,"   ");
 		OLED_ShowSignedNum(3,12,Speed,3);
 		if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 1)
-			{
-				Motor_SetSpeed(Speed);
-			}
+		{
+			Motor_SetSpeed(Speed);
+		}
 	}
 	else
 	{

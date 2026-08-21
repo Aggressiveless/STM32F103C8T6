@@ -7,7 +7,7 @@
 #include "Motor.h"
 #include "Integration.h"
 #include "FanModule.h" 
-
+#include "PWM.h"
 
 
 
@@ -29,7 +29,7 @@ int main(void)
 	
 	OLED_ShowString(1,1,"ADValue:");
 	OLED_ShowString(2,1,"Temperature:00.0");
-	OLED_ShowCN(3,1,0,1);
+	OLED_ShowCN(3,1,0,1);                         //"当前转速为"显示
 	OLED_ShowCN(3,2,1,1);
 	OLED_ShowCN(3,3,2,1);
 	OLED_ShowCN(3,4,3,1);
@@ -39,9 +39,11 @@ int main(void)
 	{
 		KeyNum = Key_GetNum();
 		
+		Temp = GetTemp();
+
 		TurnPage(KeyNum);
 
-		Display(Num);
+//		Display(Num);
 
 		
 //		OLED_ShowNum(3,12,Speed,3);

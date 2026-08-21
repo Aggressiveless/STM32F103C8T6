@@ -3,11 +3,10 @@
 #include "OLED.h"
 #include "PWM.h"
 
-uint16_t AimTemp = 20;
-uint16_t FanModule(uint8_t KeyNum)
+float AimTemp = 20;
 
-uint16_t
 
+uint16_t FanModule(uint8_t KeyNum)  //手动挡转速调节模块
 {
 	if(KeyNum == 2)
 	{
@@ -66,11 +65,14 @@ uint16_t
 	return Speed;
 }
 
-void AutoMode(uint8_t KeyNum,uint16_t Temp)
+void AutoMode(uint8_t KeyNum,float Temp)
 {
+//	GPIO_SetBits(GPIOA,GPIO_Pin_11);
 	
-	uint16_t Error = Temp - AimTemp;
-	uint16_t AutoSpeed = 0;
+	if(KeyNum == 2)
+	{
+		Motor_Turn();
+	}
 	
 	
 	if(KeyNum == 3)
@@ -81,14 +83,13 @@ void AutoMode(uint8_t KeyNum,uint16_t Temp)
 		}
 		else
 		{
-			OLED_ShowCN(1,1,10,1);
-			OLED_ShowCN(1,2,11,1);
-			OLED_ShowCN(1,3,12,1);
-			OLED_ShowCN(1,4,13,1);
-			OLED_ShowCN(1,5,14,1);
-			OLED_ShowCN(1,1,15,1);
-			OLED_ShowCN(1,2,16,1);
-			OLED_ShowString(1,11,":");
+			OLED_ShowCN(3,1,10,1);    //“超出可预设范围”显示
+			OLED_ShowCN(3,2,11,1);   
+			OLED_ShowCN(3,3,12,1);
+			OLED_ShowCN(3,4,13,1);
+			OLED_ShowCN(3,5,14,1);
+			OLED_ShowCN(3,6,15,1);
+			OLED_ShowCN(3,7,16,1);
 		}
 	}
 	if(KeyNum == 4)
@@ -97,13 +98,55 @@ void AutoMode(uint8_t KeyNum,uint16_t Temp)
 		{
 			AimTemp--;
 		}
+		else
+		{
+			OLED_ShowCN(4,1,10,1);    //“超出可预设范围”显示
+			OLED_ShowCN(4,2,11,1);   
+			OLED_ShowCN(4,3,12,1);
+			OLED_ShowCN(4,4,13,1);
+			OLED_ShowCN(4,5,14,1);
+			OLED_ShowCN(4,6,15,1);
+			OLED_ShowCN(4,7,16,1);
+		}
+	}
+	
+	if(AimTemp > 0 && AimTemp < 50)
+	{
+		OLED_ShowString(4,1,"                ");
+	}
+	
+	float Error = Temp - AimTemp;
+	int16_t AutoSpeed = (int16_t)(Error / 30.0 * 100.0);
+	
+	if(AutoSpeed > 100)
+	{
+		AutoSpeed = 100;
+	}
+	
+	if(AutoSpeed < -100)
+	{
+		AutoSpeed = -100;
 	}
 	
 	OLED_ShowNum(1,12,AimTemp,2);
+	OLED_ShowString(1,14,".");
+	OLED_ShowNum(1,15,(uint16_t)(AimTemp * 10) % 10 ,1);
+	
+	
+	OLED_ShowCN(3,1,0,1);                            //"当前转速为"显示
+	OLED_ShowCN(3,2,1,1);
+	OLED_ShowCN(3,3,2,1);
+	OLED_ShowCN(3,4,3,1);
+	OLED_ShowCN(3,5,4,1);
+	OLED_ShowString(3,11,":");
+	OLED_ShowSignedNum(3,12,AutoSpeed,3);
+	
+
 	
 	
 	
-	Motor_SetSpeed(Error);
+	
+	Motor_SetSpeed(AutoSpeed);
 	
 	
  

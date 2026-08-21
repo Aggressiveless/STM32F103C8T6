@@ -43,7 +43,7 @@ void PWM_SetCompare3(uint16_t Compare)
 	TIM_SetCompare3(TIM2,Compare);
 }
 
-uint16_t GetTemp(uint16_t AD_)
+float GetTemp(void)
 {
 	ADValue = AD_GetValue();
 	Temp = (float)(4096 - ADValue) / 4095 * 100.0 - 28.0;

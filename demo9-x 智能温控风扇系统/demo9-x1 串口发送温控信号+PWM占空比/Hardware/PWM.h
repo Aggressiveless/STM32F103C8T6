@@ -3,9 +3,9 @@
 
 void PWM_Init(void);
 void PWM_SetCompare3(uint16_t Compare);
-uint16_t GetTemp(uint16_t AD_);
+float GetTemp(void);
 
-extern uint16_t Temp;
+extern float Temp;
 extern uint16_t ADValue;
 
 
