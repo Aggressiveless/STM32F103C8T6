@@ -6,7 +6,7 @@
 float AimTemp = 20.0;
 
 
-uint16_t FanModule(uint8_t KeyNum)  //手动挡转速调节模块
+int16_t FanModule(uint8_t KeyNum)  //手动挡转速调节模块
 {
 	if(KeyNum == 2)
 	{
@@ -117,7 +117,7 @@ void AutoMode(uint8_t KeyNum,float Temp)
 	}
 	
 	float Error = Temp - AimTemp;
-	int16_t AutoSpeed = (int16_t)(Error * 2);
+	int16_t AutoSpeed = (int16_t)(Error * 4);
 	
 	if(AutoSpeed > 100)
 	{
