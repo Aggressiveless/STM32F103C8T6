@@ -2,8 +2,8 @@
 #define __INTERATION_H
 
 void TempDis_Modude(uint16_t KeyNum);
-void ShowP1(void);
-void ShowP2(void);
+void ShowSP1(void);
+void ShowSP2(void);
 void TurnPage(uint8_t KeyNum);
 void Display(uint16_t Num);
 

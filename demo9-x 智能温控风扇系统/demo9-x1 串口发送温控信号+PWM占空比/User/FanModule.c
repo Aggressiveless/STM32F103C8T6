@@ -3,7 +3,7 @@
 #include "OLED.h"
 #include "PWM.h"
 
-float AimTemp = 20;
+float AimTemp = 20.0;
 
 
 uint16_t FanModule(uint8_t KeyNum)  //手动挡转速调节模块
@@ -72,6 +72,7 @@ void AutoMode(uint8_t KeyNum,float Temp)
 	if(KeyNum == 2)
 	{
 		Motor_Turn();
+		return;
 	}
 	
 	
@@ -116,7 +117,7 @@ void AutoMode(uint8_t KeyNum,float Temp)
 	}
 	
 	float Error = Temp - AimTemp;
-	int16_t AutoSpeed = (int16_t)(Error / 30.0 * 100.0);
+	int16_t AutoSpeed = (int16_t)(Error * 2);
 	
 	if(AutoSpeed > 100)
 	{
@@ -128,20 +129,26 @@ void AutoMode(uint8_t KeyNum,float Temp)
 		AutoSpeed = -100;
 	}
 	
-	OLED_ShowNum(1,12,AimTemp,2);
+	OLED_ShowNum(1,12,AimTemp,2);                    //目标温度显示
 	OLED_ShowString(1,14,".");
 	OLED_ShowNum(1,15,(uint16_t)(AimTemp * 10) % 10 ,1);
 	
-	
+
 	OLED_ShowCN(3,1,0,1);                            //"当前转速为"显示
 	OLED_ShowCN(3,2,1,1);
 	OLED_ShowCN(3,3,2,1);
 	OLED_ShowCN(3,4,3,1);
 	OLED_ShowCN(3,5,4,1);
 	OLED_ShowString(3,11,":");
-	OLED_ShowSignedNum(3,12,AutoSpeed,3);
 	
-
+	if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 1)
+	{	
+		OLED_ShowSignedNum(3,12,AutoSpeed,3);            //转速显示
+	}
+	else 
+	{
+		OLED_ShowSignedNum(3,12,0,3);
+	}
 	
 	
 	

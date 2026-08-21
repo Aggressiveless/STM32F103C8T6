@@ -35,9 +35,7 @@ void TempDis_Modude(uint16_t KeyNum,float Temp)
 
 void ShowP1(void)
 {
-	OLED_ShowString(1,1,"                ");
-	OLED_ShowString(2,1,"                ");
-	OLED_ShowString(3,1,"                ");
+	OLED_Clear();
 	OLED_ShowString(1,1,"ADValue:");
 	OLED_ShowString(2,1,"Temperature:00.0");
 	OLED_ShowCN(3,1,0,1);                            //"当前转速为"显示
@@ -46,21 +44,25 @@ void ShowP1(void)
 	OLED_ShowCN(3,4,3,1);
 	OLED_ShowCN(3,5,4,1);
 	OLED_ShowString(3,11,":");
-	TempDis_Modude(KeyNum,Temp);
+	do
+	{
+		Temp = GetTemp();
+		TempDis_Modude(KeyNum,Temp);
 
-	
-	FanModule(KeyNum);
+		FanModule(KeyNum);
+		
+		KeyNum = Key_GetNum();
+	}
+	while(KeyNum != 5);
 	
 }
 
 void ShowSP1(void)
 {
-	OLED_ShowString(1,1,"                ");
-	OLED_ShowString(2,1,"                ");
-	OLED_ShowString(3,1,"                ");
+	OLED_Clear();
 	OLED_ShowString(1,1,"ADValue:");
-	OLED_ShowString(2,1,"Temperature:");
-	OLED_ShowCN(3,1,0,1);
+	OLED_ShowString(2,1,"Temperature:00.0");
+	OLED_ShowCN(3,1,0,1);                           //"当前转速为"显示
 	OLED_ShowCN(3,2,1,1);
 	OLED_ShowCN(3,3,2,1);
 	OLED_ShowCN(3,4,3,1);
@@ -68,6 +70,7 @@ void ShowSP1(void)
 	OLED_ShowString(3,11,":");
 	do
 	{
+		Temp = GetTemp();
 		TempDis_Modude(KeyNum,Temp);
 
 		FanModule(KeyNum);
@@ -79,9 +82,7 @@ void ShowSP1(void)
 
 void ShowP2(void)
 {
-	OLED_ShowString(1,1,"                ");
-	OLED_ShowString(2,1,"                ");
-	OLED_ShowString(3,1,"                ");
+	OLED_Clear();
 	OLED_ShowCN(1,1,5,1);               //“目标温度为”显示
 	OLED_ShowCN(1,2,6,1);
 	OLED_ShowCN(1,3,7,1);
@@ -92,9 +93,7 @@ void ShowP2(void)
 
 void ShowSP2(void)
 {
-	OLED_ShowString(1,1,"                ");
-	OLED_ShowString(2,1,"                ");
-	OLED_ShowString(3,1,"                ");
+	OLED_Clear();
 	OLED_ShowCN(1,1,5,1);
 	OLED_ShowCN(1,2,6,1);                            //“目标温度为”显示
 	OLED_ShowCN(1,3,7,1);
@@ -112,9 +111,9 @@ void ShowSP2(void)
 	do
 	{
 		Temp = GetTemp();
-		OLED_ShowNum(2,13,Temp,2);
-		OLED_ShowString(2,15,".");
-		OLED_ShowNum(2,16,(uint16_t)(Temp * 10) % 10 ,1);
+		OLED_ShowNum(2,12,Temp,2);                       //显示当前温度
+		OLED_ShowString(2,14,".");
+		OLED_ShowNum(2,15,(uint16_t)(Temp * 10) % 10 ,1);
 		
 		AutoMode(KeyNum,Temp);
 		KeyNum = Key_GetNum();
@@ -124,8 +123,8 @@ void ShowSP2(void)
  
 void TurnPage(uint8_t KeyNum)
 {
-	if(KeyNum == 5)
-	{
+//	if(KeyNum == 5)
+//	{
 		Num++;
 		if(Num % 2 == 1)
 		{
@@ -136,8 +135,8 @@ void TurnPage(uint8_t KeyNum)
 			ShowSP1();
 		}
 //		return;
-	}
-	
+//	}
+//	
 	
 }
 

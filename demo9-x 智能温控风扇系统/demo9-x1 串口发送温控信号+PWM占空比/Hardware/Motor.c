@@ -43,13 +43,13 @@ void Motor_Turn(void)
 {
 	if (GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)
 	{
-		GPIO_SetBits(GPIOA, GPIO_Pin_11);
+		GPIO_SetBits(GPIOA, GPIO_Pin_11);                      //通电
 		OLED_ShowString(3,12,"   ");
-		OLED_ShowSignedNum(3,12,Speed,3);
-		if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 1)
-		{
+		OLED_ShowSignedNum(3,12,Speed,3);                      //显示转速
+//		if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 1)
+//		{
 			Motor_SetSpeed(Speed);
-		}
+//		}
 	}
 	else
 	{
@@ -59,13 +59,13 @@ void Motor_Turn(void)
 //		}
 //		else
 //		{
-			GPIO_ResetBits(GPIOA, GPIO_Pin_11);
+			GPIO_ResetBits(GPIOA, GPIO_Pin_11);                 //断电
 			OLED_ShowString(3,12,"   ");
-			OLED_ShowSignedNum(3,12,0,3);
-			if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)
-			{
-				Motor_SetSpeed(0);
-			}
+			OLED_ShowSignedNum(3,12,0,3);                       //转速显示0
+//			if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 0)
+//			{
+//				Motor_SetSpeed(0);
+//			}
 //		}
 
 	}

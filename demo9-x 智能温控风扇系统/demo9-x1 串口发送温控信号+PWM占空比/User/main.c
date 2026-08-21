@@ -35,14 +35,19 @@ int main(void)
 	OLED_ShowCN(3,4,3,1);
 	OLED_ShowCN(3,5,4,1);
 	
+	ShowSP1();
+	TurnPage(KeyNum);
+	
 	while(1)
 	{
 		KeyNum = Key_GetNum();
 		
 		Temp = GetTemp();
 
-		TurnPage(KeyNum);
-
+		while(KeyNum == 5)
+		{
+			TurnPage(KeyNum);
+		}                           //case(a) switch:case 5:
 //		Display(Num);
 
 		
