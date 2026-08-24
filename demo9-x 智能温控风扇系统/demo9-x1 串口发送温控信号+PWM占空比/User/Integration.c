@@ -108,6 +108,13 @@ void ShowSP2(void)
 	OLED_ShowCN(2,5,4,1);
 	OLED_ShowString(2,11,":");
 	
+	OLED_ShowCN(3,1,0,1);                            //"当前转速为"显示
+	OLED_ShowCN(3,2,1,1);
+	OLED_ShowCN(3,3,2,1);
+	OLED_ShowCN(3,4,3,1);
+	OLED_ShowCN(3,5,4,1);
+	OLED_ShowString(3,11,":");
+	
 	do
 	{
 		Temp = GetTemp();

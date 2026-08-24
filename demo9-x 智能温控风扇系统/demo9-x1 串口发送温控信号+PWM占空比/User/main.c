@@ -13,6 +13,8 @@
 
 int main(void)
 {
+	
+	Delay_ms(200);
 
 	Serial_Init();
 	OLED_Init();
@@ -58,6 +60,8 @@ int main(void)
 //		{
 //			Motor_SetSpeed();
 //		}
+		
+		Delay_ms(50);
 		
 	}
 }

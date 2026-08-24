@@ -134,12 +134,7 @@ void AutoMode(uint8_t KeyNum,float Temp)
 	OLED_ShowNum(1,15,(uint16_t)(AimTemp * 10) % 10 ,1);
 	
 
-	OLED_ShowCN(3,1,0,1);                            //"当前转速为"显示
-	OLED_ShowCN(3,2,1,1);
-	OLED_ShowCN(3,3,2,1);
-	OLED_ShowCN(3,4,3,1);
-	OLED_ShowCN(3,5,4,1);
-	OLED_ShowString(3,11,":");
+	
 	
 	if(GPIO_ReadOutputDataBit(GPIOA, GPIO_Pin_11) == 1)
 	{	
