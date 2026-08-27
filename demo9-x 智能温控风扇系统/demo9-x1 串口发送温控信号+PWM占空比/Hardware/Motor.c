@@ -25,17 +25,18 @@ void Motor_Init(void)
 
 void Motor_SetSpeed(int16_t Speed)
 {
+	int16_t ActualSpeed = Speed * 0.6; //避免峰值电流过大导致转接器电流过载自动断电
 	if(Speed >= 0)
 	{
 		GPIO_SetBits(GPIOA,GPIO_Pin_5);
 		GPIO_ResetBits(GPIOA,GPIO_Pin_4);
-		PWM_SetCompare3(Speed);
+		PWM_SetCompare3(ActualSpeed);
 	}
 	else
 	{
 		GPIO_SetBits(GPIOA,GPIO_Pin_4);
 		GPIO_ResetBits(GPIOA,GPIO_Pin_5);
-		PWM_SetCompare3(-Speed);
+		PWM_SetCompare3(-ActualSpeed);
 	}
 }
 
