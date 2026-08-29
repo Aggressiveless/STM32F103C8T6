@@ -117,7 +117,7 @@ void AutoMode(uint8_t KeyNum,float Temp)
 	}
 	
 	float Error = Temp - AimTemp;
-	int16_t AutoSpeed = (int16_t)(Error * 4);
+	int16_t AutoSpeed = (int16_t)(Error * 10);    
 	
 	if(AutoSpeed > 100)
 	{

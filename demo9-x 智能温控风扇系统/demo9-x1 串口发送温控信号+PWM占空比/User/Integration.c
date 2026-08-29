@@ -44,40 +44,40 @@ void ShowP1(void)
 	OLED_ShowCN(3,4,3,1);
 	OLED_ShowCN(3,5,4,1);
 	OLED_ShowString(3,11,":");
-	do
-	{
-		Temp = GetTemp();
-		TempDis_Modude(KeyNum,Temp);
+//	do
+//	{
+//		Temp = GetTemp();
+//		TempDis_Modude(KeyNum,Temp);
 
-		FanModule(KeyNum);
-		
-		KeyNum = Key_GetNum();
-	}
-	while(KeyNum != 5);
-	
+//		FanModule(KeyNum);
+//		
+//		KeyNum = Key_GetNum();
+//	}
+//	while(KeyNum != 5);
+//	
 }
 
 void ShowSP1(void)
 {
-	OLED_Clear();
-	OLED_ShowString(1,1,"ADValue:");
-	OLED_ShowString(2,1,"Temperature:00.0");
-	OLED_ShowCN(3,1,0,1);                           //"当前转速为"显示
-	OLED_ShowCN(3,2,1,1);
-	OLED_ShowCN(3,3,2,1);
-	OLED_ShowCN(3,4,3,1);
-	OLED_ShowCN(3,5,4,1);
-	OLED_ShowString(3,11,":");
-	do
-	{
+//	OLED_Clear();
+//	OLED_ShowString(1,1,"ADValue:");
+//	OLED_ShowString(2,1,"Temperature:00.0");
+//	OLED_ShowCN(3,1,0,1);                           //"当前转速为"显示
+//	OLED_ShowCN(3,2,1,1);
+//	OLED_ShowCN(3,3,2,1);
+//	OLED_ShowCN(3,4,3,1);
+//	OLED_ShowCN(3,5,4,1);
+//	OLED_ShowString(3,11,":");
+//	do
+//	{
 		Temp = GetTemp();
 		TempDis_Modude(KeyNum,Temp);
 
 		FanModule(KeyNum);
 		
 		KeyNum = Key_GetNum();
-	}
-	while(KeyNum != 5);
+//	}
+//	while(KeyNum != 5);
 }
 
 void ShowP2(void)
@@ -87,17 +87,6 @@ void ShowP2(void)
 	OLED_ShowCN(1,2,6,1);
 	OLED_ShowCN(1,3,7,1);
 	OLED_ShowCN(1,4,8,1);                
-	OLED_ShowCN(1,5,9,1);
-	OLED_ShowString(1,11,":");
-}
-
-void ShowSP2(void)
-{
-	OLED_Clear();
-	OLED_ShowCN(1,1,5,1);
-	OLED_ShowCN(1,2,6,1);                            //“目标温度为”显示
-	OLED_ShowCN(1,3,7,1);
-	OLED_ShowCN(1,4,8,1);
 	OLED_ShowCN(1,5,9,1);
 	OLED_ShowString(1,11,":");
 	
@@ -114,9 +103,34 @@ void ShowSP2(void)
 	OLED_ShowCN(3,4,3,1);
 	OLED_ShowCN(3,5,4,1);
 	OLED_ShowString(3,11,":");
-	
-	do
-	{
+}
+
+void ShowSP2(void)
+{
+//	OLED_Clear();
+//	OLED_ShowCN(1,1,5,1);
+//	OLED_ShowCN(1,2,6,1);                            //“目标温度为”显示
+//	OLED_ShowCN(1,3,7,1);
+//	OLED_ShowCN(1,4,8,1);
+//	OLED_ShowCN(1,5,9,1);
+//	OLED_ShowString(1,11,":");
+//	
+//	OLED_ShowCN(2,1,0,1);                            //"当前温度为"显示
+//	OLED_ShowCN(2,2,1,1);
+//	OLED_ShowCN(2,3,7,1);
+//	OLED_ShowCN(2,4,8,1);
+//	OLED_ShowCN(2,5,4,1);
+//	OLED_ShowString(2,11,":");
+//	
+//	OLED_ShowCN(3,1,0,1);                            //"当前转速为"显示
+//	OLED_ShowCN(3,2,1,1);
+//	OLED_ShowCN(3,3,2,1);
+//	OLED_ShowCN(3,4,3,1);
+//	OLED_ShowCN(3,5,4,1);
+//	OLED_ShowString(3,11,":");
+//	
+//	do
+//	{
 		Temp = GetTemp();
 		OLED_ShowNum(2,12,Temp,2);                       //显示当前温度
 		OLED_ShowString(2,14,".");
@@ -124,24 +138,23 @@ void ShowSP2(void)
 		
 		AutoMode(KeyNum,Temp);
 		KeyNum = Key_GetNum();
-	}
-	while(KeyNum != 5);
+//	}
+//	while(KeyNum != 5);
 }
  
 void TurnPage(uint8_t KeyNum)
 {
 //	if(KeyNum == 5)
 //	{
-		Num++;
 		if(Num % 2 == 1)
 		{
-			ShowSP2();
+			ShowP2();
 		}
 		else
 		{
-			ShowSP1();
+			ShowP1();
 		}
-//		return;
+//		return Num;
 //	}
 //	
 	
@@ -157,6 +170,7 @@ void Display(uint16_t Num)
 	{
 		ShowSP1();
 	}
+	
 }
 
 
