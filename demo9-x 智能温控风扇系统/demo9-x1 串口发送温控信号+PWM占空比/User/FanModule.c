@@ -129,6 +129,11 @@ void AutoMode(uint8_t KeyNum,float Temp)
 		AutoSpeed = -100;
 	}
 	
+	if(Error < 0.3 && Error > -0.3)
+	{
+		AutoSpeed = 0;
+	}
+	
 	OLED_ShowNum(1,12,AimTemp,2);                    //目标温度显示
 	OLED_ShowString(1,14,".");
 	OLED_ShowNum(1,15,(uint16_t)(AimTemp * 10) % 10 ,1);
