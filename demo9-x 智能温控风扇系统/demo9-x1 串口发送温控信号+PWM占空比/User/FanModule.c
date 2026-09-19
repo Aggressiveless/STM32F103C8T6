@@ -117,7 +117,7 @@ void AutoMode(uint8_t KeyNum,float Temp)
 	}
 	
 	float Error = Temp - AimTemp;
-	int16_t AutoSpeed = (int16_t)(Error * 10);    
+	int16_t AutoSpeed = (int16_t)(Error * 10);    //自动挡风速为误差值的10倍
 	
 	if(AutoSpeed > 100)
 	{
@@ -129,10 +129,11 @@ void AutoMode(uint8_t KeyNum,float Temp)
 		AutoSpeed = -100;
 	}
 	
-	if(Error < 0.3 && Error > -0.3)
+	if(Error < 1 && Error > -1)                     //启动占空比
 	{
 		AutoSpeed = 0;
 	}
+
 	
 	OLED_ShowNum(1,12,AimTemp,2);                    //目标温度显示
 	OLED_ShowString(1,14,".");
@@ -151,12 +152,9 @@ void AutoMode(uint8_t KeyNum,float Temp)
 	}
 	
 	
-	
-	
 	Motor_SetSpeed(AutoSpeed);
 	
-	
- 
+
 	
 }
 
